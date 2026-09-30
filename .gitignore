@@ -1,7 +1,12 @@
+# work/ is the build area: ignore everything except the committed artifacts.
+# NOTE: `work/*` excludes each goal dir, so dirs must be re-included before
+# files inside them can be un-ignored (git cannot re-include a file whose
+# parent directory is excluded).
 work/*
+!work/*/
+work/*/*
 !work/*/REPORT.md
-runs/
+!work/*/LOG.md
 loop/config.yaml
-loop/enabled
 __pycache__/
 *.pyc

@@ -8,16 +8,18 @@ When Aiko has nothing else to do, she picks the top unfinished goal, builds it i
 
 ## When does the loop run?
 
-On the Jetson, inside Aiko-chan's scheduler. A `playground_tick()` runs every 15 minutes and asks:
+On the Jetson, inside Aiko-chan's scheduler, as one ordinary `interval` /
+`agentic` schedule record ("Aiko-Playground idle build") seeded by
+`system/playground.py`. It fires every 15 minutes but only turns into real
+work when the human has been genuinely idle for at least 10 minutes (the
+record is `requires_idle`; a skipped tick just advances to the next one).
+It is visible in Calendar Studio like any other scheduled task — pausing
+(disabling) it there pauses the loop.
 
-1. Is there an active conversation (last 15 min)? → skip.
-2. Is anything else running (agents, dream pipeline, reflection)? → skip.
-3. Is system load sane (load avg < 4, GPU not mid-TTS)? → else skip.
-4. Is there a `todo` goal? → work. Otherwise → rest.
-
-Each work session is time-boxed (default 45 minutes). When the box ends, she saves state and stops mid-goal cleanly — the next tick resumes.
-
-> **Integration note:** this loop does not exist in Aiko-chan yet. `LOOP.md` is the design; wiring `playground_tick()` into the scheduler is a change to Aiko-chan and goes through the normal PR process with Oppa's approval. Nothing here modifies Aiko-chan on its own.
+Each fire runs through Aiko's normal agent loop with the worker instructions
+attached. Each work session is time-boxed (default 45 minutes). When the box
+ends — or the human becomes active mid-session — she checkpoints and stops
+cleanly; the next tick resumes.
 
 ## One work session
 
@@ -26,7 +28,9 @@ tick (idle confirmed)
   → read GOALS.md, pick top `todo` goal → mark `in_progress`
   → read the goal file fully
   → plan (short plan in work/<slug>/PLAN.md)
+  → append a new session section to work/<slug>/LOG.md (start timestamp)
   → build → sandbox/run.py → read output → fix → repeat
+     (log every file written + why, every sandbox run + errors, in LOG.md)
   → self-review: walk the acceptance criteria one by one,
     each with the evidence (test log, PNG path, measured number)
   → if all pass:
@@ -37,8 +41,34 @@ tick (idle confirmed)
     else:
       - write work/<slug>/NOTES.md with what's blocking
       - leave goal `in_progress` (or back to `todo` if blocked on Oppa)
-  → append session log to runs/<timestamp>-<slug>.md
+  → finish the LOG.md session section (end timestamp + reason + next steps)
+  → append session summary to runs/<timestamp>-<slug>.md
 ```
+
+## The full coding log
+
+Oppa reads `work/<slug>/LOG.md` to see exactly how the code came to be. It is
+committed (see `.gitignore`) and append-only: one dated section per session,
+in the format of `loop/SESSION_LOG_TEMPLATE.md`. Every section records:
+
+- **Start/end timestamps** (with timezone) and the exact reason the session
+  ended (`goal done` / `time box reached` / `user active` / `kill switch` /
+  `blocked`).
+- **Interruptions and continuations.** If a session ends early because the
+  human became active, it logs the interruption time; the next session logs
+  its own start time and what it resumes. The chain must be unbroken.
+- **How the code was generated** — every file written or changed and *why*
+  (the reasoning, not just the diff).
+- **Every sandbox execution** — the exact command, exit code, key output,
+  and every error, plus what was changed to fix each one.
+- **Research** — web searches used when she didn't know how, hit an
+  unfamiliar error, or needed background to plan; what each search changed.
+- **Self-verification** — the acceptance-criteria walk with evidence,
+  including the criteria that honestly don't pass yet.
+
+She verifies her own work: nothing is called "working" unless she ran it
+through `sandbox/run.py` herself and read the output. Errors are diagnosed
+and fixed by her, in the log.
 
 ## Rules she follows
 
@@ -53,8 +83,13 @@ tick (idle confirmed)
 
 - `GOALS.md` — the index; statuses edited by the loop.
 - `goals/NN-*.md` — goal definitions; `**Status:**` line edited by the loop.
-- `work/<slug>/` — build area (gitignored except `REPORT.md`, which is committed on completion).
-- `runs/` — append-only session logs, committed.
+- `work/<slug>/` — build area (gitignored except `REPORT.md` and `LOG.md`,
+  which are committed so Oppa can read the results and the full coding log).
+- `work/<slug>/LOG.md` — the full coding log: one session section per tick,
+  appended every session (format: `loop/SESSION_LOG_TEMPLATE.md`).
+- `work/<slug>/CHECKPOINT.md` — resume state (gitignored; the next tick
+  starts here).
+- `runs/` — append-only per-session summary cards, committed.
 
 ## Configuration
 
@@ -77,4 +112,4 @@ email:
 - The sandbox kills runaway scripts (timeout) and confines file writes to the playground.
 - The loop never runs while she's talking to Oppa or while heavy jobs run.
 - Email goes to exactly one address (Oppa's). The notifier refuses to send anywhere else.
-- If the loop ever misbehaves, deleting `loop/enabled` (a sentinel file) pauses it instantly — the tick checks for it first.
+- If the loop ever misbehaves, creating a `loop/disabled` file pauses it instantly — the session checks for it first and stands down.
