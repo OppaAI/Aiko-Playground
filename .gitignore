@@ -1,0 +1,7 @@
+work/*
+!work/*/REPORT.md
+runs/
+loop/config.yaml
+loop/enabled
+__pycache__/
+*.pyc

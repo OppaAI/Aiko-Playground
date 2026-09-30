@@ -1,0 +1,12 @@
+# Copy to loop/config.yaml on the Jetson and fill in. Never commit config.yaml.
+tick_minutes: 15
+session_minutes: 45
+idle_minutes: 15
+email:
+  # CONFIRM WITH OPPA: is this the right address for her completion emails?
+  to: "oppa.ai.org@proton.me"
+  smtp_host: ""      # e.g. smtp.proton.me — fill in on the Jetson
+  smtp_port: 587
+  smtp_user: ""
+  # Prefer env var PLAYGROUND_SMTP_PASS over writing the password here.
+  smtp_pass: ""
