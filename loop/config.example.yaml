@@ -1,4 +1,7 @@
 # Copy to loop/config.yaml on the Jetson and fill in. Never commit config.yaml.
+# NOTE: SMTP settings below are fallback-only. The primary completion-email
+# path is Aiko's own send_email tool to AIKO_EMAIL (oppa.ai.org@proton.me,
+# in Aiko-chan's encrypted .env.age). Only fill this in if send_email is down.
 tick_minutes: 15
 session_minutes: 45
 idle_minutes: 15

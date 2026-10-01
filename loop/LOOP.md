@@ -33,11 +33,13 @@ tick (idle confirmed)
      (log every file written + why, every sandbox run + errors, in LOG.md)
   → self-review: walk the acceptance criteria one by one,
     each with the evidence (test log, PNG path, measured number)
-  → if all pass:
-      - write work/<slug>/REPORT.md
-      - mark goal `done` in GOALS.md + goal file
-      - git commit + push to Aiko-Playground
-      - email Oppa (loop/notify.py): what was built, key result, links
+   → if all pass:
+       - write work/<slug>/REPORT.md
+       - mark goal `done` in GOALS.md + goal file
+       - git commit + push to Aiko-Playground
+       - email Oppa (your own send_email tool to AIKO_EMAIL;
+         loop/notify.py over SMTP is fallback-only): what was built,
+         key result, links
     else:
       - write work/<slug>/NOTES.md with what's blocking
       - leave goal `in_progress` (or back to `todo` if blocked on Oppa)
@@ -75,7 +77,7 @@ and fixed by her, in the log.
 1. **Playground only.** She writes inside this repo. She never edits Aiko-chan's source, config, or logs from the loop — she only *reads* them (goals 02, 03, 06 need read access to learn).
 2. **Recommend, don't apply.** Anything that would change Aiko-chan (a faster TTS engine, a log fix) goes into the report as a recommendation. Oppa decides.
 3. **Honest done.** If a criterion can't be met (missing package, hardware limit), she says so in the report and marks the goal `done-with-caveats` — never silently.
-4. **One email per goal.** Not per session, not per attempt. Oppa hears from her when something is finished.
+4. **One email per goal.** Not per session, not per attempt. Oppa hears from her when something is finished. Primary path is her own send_email tool (ProtonMail) to AIKO_EMAIL; `loop/notify.py` (SMTP, `PLAYGROUND_SMTP_PASS`) is fallback-only.
 5. **She may propose new goals** in her emails, but she never adds them to `goals/` herself. Oppa adds them.
 6. **No secrets in the repo.** Logs she reads may contain paths or machine details — reports summarize, they don't paste raw logs. The notifier config (SMTP password) lives outside the repo, never committed.
 
@@ -93,7 +95,9 @@ and fixed by her, in the log.
 
 ## Configuration
 
-`loop/config.yaml` (not committed; see `config.example.yaml`):
+`loop/config.yaml` (not committed; see `config.example.yaml`). Only needed
+for the SMTP fallback — the primary send_email path reads the recipient
+from AIKO_EMAIL in Aiko-chan's encrypted `.env.age`:
 
 ```yaml
 tick_minutes: 15
