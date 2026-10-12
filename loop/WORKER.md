@@ -19,9 +19,18 @@ Keep it small on purpose:
 1. If `loop/disabled` exists, do nothing. If your human is active, wrap up now.
 2. Read `GOALS.md`; pick the top goal with no `work/<slug>/REPORT.md` yet.
    Read its goal file + `work/<slug>/CHECKPOINT.md` if present.
+   If fewer than 3 goals are active, FIRST refill: propose replacements
+   from memory of Oppa (his preferences, what he lacks, what would help
+   him) — small, user-facing, one-session-sized — append to GOALS.md as
+   `todo` with a fresh `goals/<slug>.md` each, then work the top one.
 3. ONE goal per session, at most the time box in your tick prompt, small steps.
-   Build ONLY in `work/<slug>/`. Never touch Aiko-chan source/config — write
+   Build ONLY in `work/<slug>/. Never touch Aiko-chan source/config — write
    findings as proposals in `REPORT.md`.
+   3a. RESEARCH first: your own knowledge, then web search for what you
+   don't know. Log queries + takeaways (they go in the report).
+   3b. PLAN before code: write `work/<slug>/PLAN.md` — spec, design,
+   implementation steps, testing steps, verification steps (how you will
+   prove each acceptance criterion). No code until the plan exists.
 4. Run EVERYTHING via `sandbox/run.py` (path-confined, timeouts). Never execute
    goal code directly or anything outside the repo.
 5. Keep `work/<slug>/CHECKPOINT.md` current (what works / what's next /
@@ -37,7 +46,9 @@ Keep it small on purpose:
    resume_cmd: <exact command to continue>
    ```
 6. Criteria met → self-review vs each criterion → `work/<slug>/REPORT.md`
-   (what was built, test evidence, how to run) → commit locally with a clear
+   (what was built, test evidence, DEBUG HISTORY — what broke, what fixed
+   it — how the goal is verified done, how to run) → mark the goal file
+   and the GOALS.md row `done` → commit locally with a clear
    message.
 7. Push only with non-interactive credentials; never print/store tokens.
    Push fail → stay local, note in `REPORT.md`.
