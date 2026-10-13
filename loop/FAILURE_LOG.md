@@ -422,3 +422,23 @@ Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded wit
 ## 2026-10-12 07:39 UTC — Aiko-Playground idle build failed
 
 Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
+
+## 2026-10-13 02:26 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-13 02:26 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-13 04:13 UTC — Aiko-Playground idle build failed
+
+Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
+
+## 2026-10-13 04:13 UTC — Aiko-Playground idle build failed
+
+Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
+
+## 2026-10-13 04:13 UTC — Aiko-Playground idle build failed
+
+Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
