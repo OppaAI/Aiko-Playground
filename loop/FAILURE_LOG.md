@@ -442,3 +442,111 @@ Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded wit
 ## 2026-10-13 04:13 UTC — Aiko-Playground idle build failed
 
 Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
+
+## 2026-10-14 03:38 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-14 03:38 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-14 05:23 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-14 05:23 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-14 06:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-14 06:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-16 04:08 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-16 04:08 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-16 04:24 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-16 04:57 UTC — Aiko-Playground idle build failed
+
+Error: cannot schedule new futures after shutdown
+
+## 2026-10-16 04:57 UTC — Aiko-Playground idle build failed
+
+Error: cannot schedule new futures after shutdown
+
+## 2026-10-16 08:27 UTC — Aiko-Playground idle build failed
+
+Error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /embedding (Caused by ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out. (read timeout=30.0)"))
+
+## 2026-10-17 04:37 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 04:37 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 05:23 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:40 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:40 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:40 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 06:54 UTC — Aiko-Playground idle build failed
+
+Error: embedding circuit open (5 consecutive failures)
+
+## 2026-10-17 06:54 UTC — Aiko-Playground idle build failed
+
+Error: embedding circuit open (5 consecutive failures)
+
+## 2026-10-17 06:54 UTC — Aiko-Playground idle build failed
+
+Error: embedding circuit open (5 consecutive failures)
+
+## 2026-10-17 07:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 07:10 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 19:52 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
+
+## 2026-10-17 20:07 UTC — Aiko-Playground idle build failed
+
+Error: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8080/embedding
